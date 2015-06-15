@@ -11,7 +11,6 @@
 
 <body>
     <h:form id="form">
-    
 		<h:outputText value="Meine ToDo-Liste" class="tableheader"/>
 		<h:dataTable value="#{todoList.toDos}" var="todo">
 		   <h:column>    				
@@ -23,6 +22,8 @@
 		</h:dataTable>
 		<h:commandButton value="Speichern" action="#{todoList.save}" />
 	</h:form>  
-	<p>Derzeit sind <h:outputText value="#{todoList.sizeDone}"/> von <h:outputText value="#{todoList.size}"/> ToDos erledigt.</p>
+	<p>Derzeit sind <h:outputText value="#{todoList.sizeDone}"/> von <h:outputText value="#{todoList.size}"/> ToDos erledigt.</p>		
+    <br></br>
+    <h:link value="to showTime" outcome="showTime" />
 </body>
 </html>
