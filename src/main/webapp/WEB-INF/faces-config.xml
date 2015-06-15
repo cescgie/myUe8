@@ -17,4 +17,11 @@
     </navigation-case>
 </navigation-rule>
 
+<!-- http://stackoverflow.com/questions/9174310/display-current-date-on-jsf-page  -->
+<managed-bean>
+    <managed-bean-name>currentDate</managed-bean-name>
+    <managed-bean-class>java.util.Date</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+</managed-bean>
+
 </faces-config>
