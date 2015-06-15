@@ -23,7 +23,10 @@
 		<h:commandButton value="Speichern" action="#{todoList.save}" />
 	</h:form>  
 	<p>Derzeit sind <h:outputText value="#{todoList.sizeDone}"/> von <h:outputText value="#{todoList.size}"/> ToDos erledigt.</p>		
+    <h:link value="to showTime with link" outcome="showTime" />
     <br></br>
-    <h:link value="to showTime" outcome="showTime" />
+    <h:form>
+       <h:commandLink value="to showTime with commandLink" action="showTime" />
+   </h:form>
 </body>
 </html>
