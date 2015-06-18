@@ -10,10 +10,9 @@
 </h:head>
 
 <body>
-	<p>Current Time</p>
-	<!-- Quelle : http://java.dzone.com/news/working-jsfs-fconvertdatetime -->
-	<h:outputText value="#{currentDate}">
-    	<f:convertDateTime pattern="MM/dd/yyyy HH:MM" type="date" timeZone="CET"/>
+	<p>aktuelles Datum und Uhrzeit:</p>
+	<h:outputText value="#{currentDate} #{currentTime}">
+    <f:convertDateTime type="date" timeZone="CET"/>
 	</h:outputText>
 	<br></br>
 	<h:link value="to editToDoList" outcome="editToDoList" />
