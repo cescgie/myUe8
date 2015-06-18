@@ -53,25 +53,32 @@ public class ToDoListMB implements PhaseListener, Serializable {
     this.name = name;
     }
 
-    public void beforePhase(PhaseEvent event) {
-    	if (event.getPhaseId() == PhaseId.RESTORE_VIEW)
-		{
-			System.out.println("- RenderResponse "+event.getPhaseId()+ "\n");
-		}
-    	System.out.println("Before : - " + event.getPhaseId()); 
-    }
-    
     public void afterPhase(PhaseEvent event) {
     	System.out.println("After : - "+event.getPhaseId()+ "\n");
-    		if (event.getPhaseId() == PhaseId.RENDER_RESPONSE) 
+    		if (event.getPhaseId() == PhaseId.RESTORE_VIEW) 
     		{
     			if (FacesContext.getCurrentInstance().isPostback())
     			{
-    				System.out.println("- PostbackRequest "+event.getPhaseId()+ "\n");
+    				System.out.println(" - is PostbackRequest "+event.getPhaseId()+ "\n");
     			}
     		}
     		
+    		if (event.getPhaseId() == PhaseId.RENDER_RESPONSE)
+    		{
+    			System.out.println("- is RenderResponse "+event.getPhaseId()+ "\n");
+    		}
     } 
+
+
+    public void beforePhase(PhaseEvent event) {
+    	System.out.println("Before : - " + event.getPhaseId()); 
+    	/*
+    	if (FacesContext.getCurrentInstance().isPostback()) {
+    		System.out.println("*Before : - " + event.getPhaseId()); 
+    	}
+    	*/
+    }
+
     
     public PhaseId getPhaseId() {
     return PhaseId.ANY_PHASE;
