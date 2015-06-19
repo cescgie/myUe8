@@ -100,6 +100,7 @@ public class ToDoListMB implements PhaseListener, Serializable {
      * Quelle:
      * https://community.oracle.com/thread/1729930
      * https://community.oracle.com/thread/1732507
+     * https://goo.gl/4muZdq
      */
 
 }
