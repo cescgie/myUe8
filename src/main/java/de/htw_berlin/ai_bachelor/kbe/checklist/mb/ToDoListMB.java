@@ -59,14 +59,16 @@ public class ToDoListMB implements PhaseListener, Serializable {
     		{	
     			if (FacesContext.getCurrentInstance().isPostback())
     			{
-    				System.out.println("- is PostbackRequest "+event.getPhaseId());
+    				System.out.println("- is PostbackRequest");
     			}
+    			System.out.println("- Die ID der Wurzel des Komponentenbaums: "+event.getPhaseId());
     			System.out.println("- Die Anzahl der Elemente im zum View gehörenden Komponentenbaum: " + getComponent(event)+"\n");
     		}
     		
     		if (event.getPhaseId() == PhaseId.RENDER_RESPONSE)
     		{
-    			System.out.println("- is RenderResponse :"+event.getPhaseId());
+    			System.out.println("- is RenderResponse");
+    			System.out.println("- Die ID der Wurzel des Komponentenbaums: "+event.getPhaseId());
     			System.out.println("- Die Anzahl der Elemente im zum View gehörenden Komponentenbaum: " + getComponent(event)+"\n");
     		}
     } 
@@ -78,7 +80,7 @@ public class ToDoListMB implements PhaseListener, Serializable {
 
     
     public PhaseId getPhaseId() {
-    return PhaseId.ANY_PHASE;
+    	return PhaseId.ANY_PHASE;
     }
     
     /*
@@ -93,9 +95,11 @@ public class ToDoListMB implements PhaseListener, Serializable {
 		count += event.getFacesContext().getViewRoot().getChildCount();
 		return count;
 	}
+    
     /*
      * Quelle:
      * https://community.oracle.com/thread/1729930
+     * https://community.oracle.com/thread/1732507
      */
 
 }
