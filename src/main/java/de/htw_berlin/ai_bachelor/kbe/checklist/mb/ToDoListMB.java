@@ -56,27 +56,24 @@ public class ToDoListMB implements PhaseListener, Serializable {
     public void afterPhase(PhaseEvent event) {
     	System.out.println("After : - "+event.getPhaseId()+ "\n");
     		if (event.getPhaseId() == PhaseId.RESTORE_VIEW) 
-    		{
+    		{	
     			if (FacesContext.getCurrentInstance().isPostback())
     			{
-    				System.out.println(" - is PostbackRequest "+event.getPhaseId()+ "\n");
+    				System.out.println("- is PostbackRequest "+event.getPhaseId());
     			}
+    			System.out.println("- Die Anzahl der Elemente im zum View gehörenden Komponentenbaum: " + getComponent(event)+"\n");
     		}
     		
     		if (event.getPhaseId() == PhaseId.RENDER_RESPONSE)
     		{
-    			System.out.println("- is RenderResponse "+event.getPhaseId()+ "\n");
+    			System.out.println("- is RenderResponse :"+event.getPhaseId());
+    			System.out.println("- Die Anzahl der Elemente im zum View gehörenden Komponentenbaum: " + getComponent(event)+"\n");
     		}
     } 
 
 
     public void beforePhase(PhaseEvent event) {
     	System.out.println("Before : - " + event.getPhaseId()); 
-    	/*
-    	if (FacesContext.getCurrentInstance().isPostback()) {
-    		System.out.println("*Before : - " + event.getPhaseId()); 
-    	}
-    	*/
     }
 
     
@@ -85,9 +82,20 @@ public class ToDoListMB implements PhaseListener, Serializable {
     }
     
     /*
-     *Quelle :
-     *http://www.jroller.com/cschalk/entry/getting_familiar_with_the_jsf 
-     *http://stackoverflow.com/questions/8388854/how-to-implement-a-phaselistener-which-runs-at-end-of-lifecycle
-     *http://www.devmanuals.com/tutorials/java/jsf/jsf2TagLibrary/core/phaseListener.html
+     * Quelle :
+     * http://www.jroller.com/cschalk/entry/getting_familiar_with_the_jsf 
+     * http://stackoverflow.com/questions/8388854/how-to-implement-a-phaselistener-which-runs-at-end-of-lifecycle
+     * http://www.devmanuals.com/tutorials/java/jsf/jsf2TagLibrary/core/phaseListener.html
      */
+    
+    private int getComponent(PhaseEvent event) {
+		int count = 1;
+		count += event.getFacesContext().getViewRoot().getChildCount();
+		return count;
+	}
+    /*
+     * Quelle:
+     * https://community.oracle.com/thread/1729930
+     */
+
 }
